@@ -1,0 +1,51 @@
+/* --------------------------- Grid em Porcentagem (for) -------------------------- */
+
+$container: 100;
+$gutter: 20;
+$colunas: 12;
+
+@for $i from 1 through $colunas {
+
+	$width: $container / $colunas *$i + %;
+
+	.grid-#{$i} {
+		width: $width;
+	}
+}
+
+/* ------------------------------- Grid em Px (for) ------------------------------- */
+
+$container: 960;
+$gutter: 20;
+$colunas: 12;
+
+@for $i from 1 through $colunas {
+
+	$width: $container / $colunas *$i - $gutter;
+
+	.grid-#{$i} {
+		width: $width + px;
+	}
+}
+
+/* ---------------------------------- While --------------------------------- */
+
+$i: 1;
+
+@while $i <= 6 {
+	.type-#{$i} {
+	font-size: 16 * $i + px;
+	}
+
+	$i: $i + 1;
+}
+
+/* ---------------------------------- Each ---------------------------------- */
+
+$lista: facebook twitter instagram youtube;
+
+@each $item in $lista {
+	.rede-#{$item} {
+		background-image: url('img/#{$item}.png');
+	}
+}

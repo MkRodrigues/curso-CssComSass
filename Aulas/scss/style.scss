@@ -1,0 +1,29 @@
+@import "variaveis";
+@import "aninhamento";
+@import "mixins";
+// @import "operadores";
+
+.var {
+    color: $cor-secundaria;
+    font-family: $fonte-primaria;
+    text-align: center;
+}
+
+.aninhamento {
+    margin: 0 20px;
+
+    h2 {
+        text-align: center;
+        color: black;
+    }
+}
+
+.aninhamento h2 {
+    @include titulo-grande;
+    @include separador($cor-secundaria, 100px);
+
+    @include mobile {
+        text-align: left;
+        font-size: 1.5em;
+    }
+}

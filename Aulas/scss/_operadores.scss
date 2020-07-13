@@ -1,0 +1,6 @@
+$gutter: 20px;
+
+div {
+    width: 400px - $gutter;
+    padding: $gutter;
+}

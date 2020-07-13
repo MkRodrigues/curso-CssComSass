@@ -1,0 +1,60 @@
+.aninhamento ul {
+  text-align: center;
+}
+
+.aninhamento ul li {
+  display: inline-block;
+  list-style: none;
+}
+
+.aninhamento ul li a {
+  display: block;
+  padding: 20px;
+  background: pink;
+  text-decoration: none;
+  color: white;
+}
+
+.aninhamento ul li a:hover {
+  background: #ff5a77;
+}
+
+.var {
+  color: pink;
+  font-family: Arial;
+  text-align: center;
+}
+
+.aninhamento {
+  margin: 0 20px;
+}
+
+.aninhamento h2 {
+  text-align: center;
+  color: black;
+}
+
+.aninhamento h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 4em;
+  text-transform: uppercase;
+  color: pink;
+}
+
+.aninhamento h2::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: pink;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .aninhamento h2 {
+    text-align: left;
+    font-size: 1.5em;
+  }
+}
+/*# sourceMappingURL=style.css.map */

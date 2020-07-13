@@ -1,0 +1,18 @@
+@mixin tipografia-1($tamanho) {
+    font-family: monospace;
+
+    @if $tamanho==16 {
+        font-size: 1em;
+        font-weight: normal;
+    }
+
+    @else if $tamanho==18 {
+        font-size: 1.125em;
+        font-weight: normal;
+    }
+
+    @else if $size=24 {
+        font-size: 1.5em;
+        font-weight: boldF;
+    }
+}

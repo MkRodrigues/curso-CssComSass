@@ -1,0 +1,19 @@
+.aninhamento ul {
+    text-align: center;
+
+    li {
+        display: inline-block;
+        list-style: none;
+
+        a{
+            display: block;
+            padding: 20px;
+            background: $cor-secundaria;
+            text-decoration: none;
+            color: $cor-terciaria;
+            &:hover{
+                background: darken(pink, 20%);
+            }
+        }
+    }
+}

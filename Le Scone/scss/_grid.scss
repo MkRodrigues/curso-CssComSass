@@ -1,0 +1,149 @@
+//Devices
+
+$cols: 12;
+$gutter: 20px;
+$large-dv: 1200px;
+$medium-dv: 760px;
+$small-dv: 460px;
+
+//Border-box
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+//Mixin
+
+@mixin device($size) {
+    @if $size==large {
+        @media screen and (min-width: $large-dv) {
+            @content;
+        }
+    }
+
+    @else if $size==medium {
+        @media screen and (min-width: $medium-dv) and (max-width: $large-dv - 1) {
+            @content;
+        }
+    }
+
+    @else if $size==small {
+        @media screen and (max-width: $medium-dv - 1) {
+            @content;
+        }
+    }
+}
+
+//  Funções
+
+@function grid ($col, $offset: false) {
+    $width: $col / $cols * 100 + "%";
+    $result: calc(#{$width} - #{$gutter});
+
+    @if $offset==offset {
+        $gutter: $gutter / 2;
+        $result: calc(#{$width} + #{$gutter});
+    }
+
+    @return $result;
+}
+
+
+// Classes de Grid
+
+@for $i from 1 through $cols {
+    .grid-#{$i} {
+        width: grid($i);
+    }
+}
+
+// @Mixin Estrutura Grid
+@mixin estrutura-grid {
+    float: left;
+    min-height: 1px;
+    margin-left: $gutter / 2;
+    margin-right: $gutter / 2;
+
+    @include device(small) {
+        width: 100%;
+        float: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+// O valor entre colchetes [], [class=".grid-1"], seleciona todos as classes que contenham o valor .grid-1 e pode ser usado para selecionar qualquer atributo HTML, exemplo [alt=""], já o símbolo ^ especifica que todos os atributos HTML que contenham os valores(classe) iniciais estipulados serão selecionados [class^="grid-"], possibilita selecionar todos sem que precisem ser selecionados à mão (.grid-1, .grid-2 etc..).
+
+[class^="grid-"] {
+    @include estrutura-grid();
+}
+
+
+// Classes de Offset
+
+@for $i from 1 through $cols {
+    .offset-#{$i} {
+        margin-left: grid($i, offset);
+        @extend %offset;
+    }
+}
+
+@include device(small) {
+    %offset {
+        margin-left: 0;
+    }
+}
+
+// ClearFix
+@mixin clearfix {
+
+    &::before,
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+// Container 
+@mixin container {
+    max-width: $large-dv;
+    margin: 0 auto;
+    position: relative;
+
+    @include device(medium) {
+        max-width: $medium-dv;
+    }
+
+    @include device(small) {
+        max-width: $small-dv;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    @include clearfix;
+}
+
+.container {
+    @include container;
+}
+
+// Linha
+
+@mixin row {
+    margin-left: -$gutter / 2;
+    margin-right: -$gutter / 2;
+
+    @include device(small) {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    @include clearfix();
+}
+
+.row {
+    @include row();
+}

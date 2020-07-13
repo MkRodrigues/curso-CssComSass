@@ -1,0 +1,29 @@
+$rosa: pink;
+
+a:hover {
+    background-color: darken($rosa, 20%);
+}
+
+a:hover {
+    background-color: lighten($rosa, 20%);
+}
+
+a:hover {
+    background-color: transparentize($rosa, 0.5);
+}
+
+$width: 100%;
+
+div {
+    width: round($width / 3);
+}
+
+// Calculando em
+@function em($pixels, $contexto: 16) {
+    @return ($pixels / $contexto) * 1em;
+}
+
+// Calculando Grid
+@function grid($colunas, $total: 12) {
+    @return ($colunas / $total) * 100%;
+}
